@@ -2,9 +2,8 @@
 
 import { computed, ref } from "vue"
 import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { formatDate, formatQty } from "@app/utils"
 import {
-	formatDate,
-	formatQty,
 	groupItemNames,
 	previewNames,
 	shipmentNote,

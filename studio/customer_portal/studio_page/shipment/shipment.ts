@@ -13,9 +13,8 @@ import {
 	INK9,
 	line,
 	printDocument,
-	shipmentStatus,
-	statusTheme,
-} from "@app/lib/documents"
+} from "@app/utils"
+import { shipmentStatus, statusTheme } from "@app/lib/documents"
 
 export default function setup(context) {
 	const doc = computed<any>(() => context.shipment?.doc ?? {})

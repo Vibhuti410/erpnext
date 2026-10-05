@@ -15,8 +15,8 @@ import {
 	line,
 	printDocument,
 	RED,
-	statusTheme,
-} from "@app/lib/documents"
+} from "@app/utils"
+import { statusTheme } from "@app/lib/documents"
 
 export default function setup(context) {
 	const doc = computed<any>(() => context.quotation?.doc ?? {})

@@ -3,7 +3,6 @@
 import { computed } from "vue"
 import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
 import {
-	ACTIVE_ORDER_STATUSES,
 	daysUntil,
 	descriptionOf,
 	EMPTY,
@@ -16,8 +15,8 @@ import {
 	line,
 	printDocument,
 	RED,
-	statusTheme,
-} from "@app/lib/documents"
+} from "@app/utils"
+import { ACTIVE_ORDER_STATUSES, statusTheme } from "@app/lib/documents"
 
 export default function setup(context) {
 	const doc = computed<any>(() => context.order?.doc ?? {})

@@ -2,9 +2,8 @@
 
 import { computed, ref } from "vue"
 import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
-import {
-	groupItemNames, previewNames, quotationNote, statusTheme, formatMoney, daysUntil,
-} from "@app/lib/documents"
+import { daysUntil, formatMoney } from "@app/utils"
+import { groupItemNames, previewNames, quotationNote, statusTheme } from "@app/lib/documents"
 
 export default function setup(context) {
 	const quotations = computed<any[]>(() => context.quotations?.data ?? [])

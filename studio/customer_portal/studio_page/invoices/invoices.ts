@@ -2,9 +2,8 @@
 
 import { computed, ref } from "vue"
 import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
-import {
-	groupItemNames, invoiceNote, previewNames, statusTheme, formatMoney, daysUntil,
-} from "@app/lib/documents"
+import { daysUntil, formatMoney } from "@app/utils"
+import { groupItemNames, invoiceNote, previewNames, statusTheme } from "@app/lib/documents"
 
 export default function setup(context) {
 	const invoices = computed<any[]>(() => context.invoices?.data ?? [])
