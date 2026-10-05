@@ -18,14 +18,14 @@
 		"allowJs": true,
 		"module": "esnext",
 		"moduleResolution": "bundler",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"target": "es2020",
 		"lib": [
 			"es2020",
 			"dom"
 		],
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true
+		"skipLibCheck": true
 	},
 	"include": [
 		"**/*.ts"
