@@ -165,13 +165,14 @@
                   {
                    "blockName": "Icon",
                    "classes": [
-                    "lucide-search",
                     "size-4",
                     "text-ink-gray-5"
                    ],
                    "componentId": "span-vxslb8ofc",
-                   "componentName": "span",
-                   "originalElement": "span",
+                   "componentName": "Icon",
+                   "componentProps": {
+                    "icon": "lucide-search"
+                   },
                    "parentSlotName": "prefix"
                   }
                  ],
@@ -506,13 +507,14 @@
               {
                "blockName": "Icon",
                "classes": [
-                "lucide-receipt-text",
                 "size-5",
                 "text-ink-gray-5"
                ],
                "componentId": "span-fp2k1otgs",
-               "componentName": "span",
-               "originalElement": "span"
+               "componentName": "Icon",
+               "componentProps": {
+                "icon": "lucide-receipt-text"
+               }
               }
              ],
              "componentId": "div-nfppoff23",
@@ -739,13 +741,14 @@
                   {
                    "blockName": "Icon",
                    "classes": [
-                    "lucide-search",
                     "size-4",
                     "text-ink-gray-5"
                    ],
                    "componentId": "span-vxslb8ofc",
-                   "componentName": "span",
-                   "originalElement": "span",
+                   "componentName": "Icon",
+                   "componentProps": {
+                    "icon": "lucide-search"
+                   },
                    "parentSlotName": "prefix"
                   }
                  ],
@@ -1080,13 +1083,14 @@
               {
                "blockName": "Icon",
                "classes": [
-                "lucide-receipt-text",
                 "size-5",
                 "text-ink-gray-5"
                ],
                "componentId": "span-fp2k1otgs",
-               "componentName": "span",
-               "originalElement": "span"
+               "componentName": "Icon",
+               "componentProps": {
+                "icon": "lucide-receipt-text"
+               }
               }
              ],
              "componentId": "div-nfppoff23",
@@ -1157,7 +1161,7 @@
    "auto": 1,
    "document_type": "Sales Invoice",
    "fields": "[\"name\", \"customer\", \"customer_name\", \"company\", \"posting_date\", \"due_date\", \"status\", \"grand_total\", \"outstanding_amount\", \"currency\", \"is_return\"]",
-   "filters": "{\"docstatus\": 1}",
+   "filters": "{\"docstatus\": 1, \"customer\": [\"in\", \"{{ customers }}\"]}",
    "limit": 200,
    "method": "GET",
    "params": "{}",
@@ -1171,7 +1175,7 @@
    "auto": 1,
    "document_type": "Sales Invoice",
    "fields": "[\"name\", \"`tabSales Invoice Item`.item_name\"]",
-   "filters": "{\"docstatus\": 1}",
+   "filters": "{\"docstatus\": 1, \"customer\": [\"in\", \"{{ customers }}\"]}",
    "limit": 500,
    "method": "GET",
    "params": "{}",

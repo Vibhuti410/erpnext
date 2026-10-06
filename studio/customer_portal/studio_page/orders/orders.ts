@@ -1,7 +1,8 @@
 /** Orders list. */
 
 import { computed, ref } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import { daysUntil, formatMoney } from "@app/utils"
 import {
 	ACTIVE_ORDER_STATUSES,
@@ -94,10 +95,11 @@ export default function setup(context) {
 
 	// ---------------------------------------------------------------- sidebar
 	const { companyName, companyInitial } = usePortalIdentity(() => orders.value[0]?.company)
+	const { user, customers } = useSession()
 	const customerName = computed(() => orders.value[0]?.customer_name ?? orders.value[0]?.customer ?? "")
 
 	return {
-		companyName, customerName, companyInitial, user,
+		companyName, customerName, companyInitial, user, customers,
 		filter, query, filterOptions, counts, rows,
 		emptyTitle, emptyCaption,
 		formatMoney, statusTheme,

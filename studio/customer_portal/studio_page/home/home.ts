@@ -1,7 +1,8 @@
 /** Home. The signed-in contact and the activity feed are STATIC. */
 
 import { computed } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import { daysUntil, formatDate, formatMoney } from "@app/utils"
 import {
 	ACTIVE_ORDER_STATUSES,
@@ -42,6 +43,7 @@ export default function setup(context) {
 	const openQuotations = computed(() => quotations.value.filter((q) => q.status === "Open"))
 
 	const { companyName, companyInitial } = usePortalIdentity(() => quotations.value[0]?.company)
+	const { user, customers } = useSession()
 	const customerName = computed(
 		() => quotations.value[0]?.customer_name ?? quotations.value[0]?.party_name ?? "",
 	)
@@ -238,7 +240,7 @@ export default function setup(context) {
 	]
 
 	return {
-		companyName, customerName, companyInitial, accountLine, user,
+		companyName, customerName, companyInitial, accountLine, user, customers,
 		counters, homeGroups, activity,
 		formatDate, formatMoney, statusTheme,
 	}

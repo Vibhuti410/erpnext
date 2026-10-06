@@ -165,13 +165,14 @@
                   {
                    "blockName": "Icon",
                    "classes": [
-                    "lucide-search",
                     "size-4",
                     "text-ink-gray-5"
                    ],
                    "componentId": "span-g1frpuqv4",
-                   "componentName": "span",
-                   "originalElement": "span",
+                   "componentName": "Icon",
+                   "componentProps": {
+                    "icon": "lucide-search"
+                   },
                    "parentSlotName": "prefix"
                   }
                  ],
@@ -506,13 +507,14 @@
               {
                "blockName": "Icon",
                "classes": [
-                "lucide-shopping-cart",
                 "size-5",
                 "text-ink-gray-5"
                ],
                "componentId": "span-693tkku7f",
-               "componentName": "span",
-               "originalElement": "span"
+               "componentName": "Icon",
+               "componentProps": {
+                "icon": "lucide-shopping-cart"
+               }
               }
              ],
              "componentId": "div-1jjfxbbq0",
@@ -739,13 +741,14 @@
                   {
                    "blockName": "Icon",
                    "classes": [
-                    "lucide-search",
                     "size-4",
                     "text-ink-gray-5"
                    ],
                    "componentId": "span-g1frpuqv4",
-                   "componentName": "span",
-                   "originalElement": "span",
+                   "componentName": "Icon",
+                   "componentProps": {
+                    "icon": "lucide-search"
+                   },
                    "parentSlotName": "prefix"
                   }
                  ],
@@ -1080,13 +1083,14 @@
               {
                "blockName": "Icon",
                "classes": [
-                "lucide-shopping-cart",
                 "size-5",
                 "text-ink-gray-5"
                ],
                "componentId": "span-693tkku7f",
-               "componentName": "span",
-               "originalElement": "span"
+               "componentName": "Icon",
+               "componentProps": {
+                "icon": "lucide-shopping-cart"
+               }
               }
              ],
              "componentId": "div-1jjfxbbq0",
@@ -1157,7 +1161,7 @@
    "auto": 1,
    "document_type": "Sales Order",
    "fields": "[\"name\", \"customer\", \"customer_name\", \"company\", \"transaction_date\", \"delivery_date\", \"status\", \"grand_total\", \"currency\", \"per_delivered\", \"per_billed\"]",
-   "filters": "{\"docstatus\": 1}",
+   "filters": "{\"docstatus\": 1, \"customer\": [\"in\", \"{{ customers }}\"]}",
    "limit": 200,
    "method": "GET",
    "params": "{}",
@@ -1171,7 +1175,7 @@
    "auto": 1,
    "document_type": "Sales Order",
    "fields": "[\"name\", \"`tabSales Order Item`.item_name\"]",
-   "filters": "{\"docstatus\": 1}",
+   "filters": "{\"docstatus\": 1, \"customer\": [\"in\", \"{{ customers }}\"]}",
    "limit": 500,
    "method": "GET",
    "params": "{}",

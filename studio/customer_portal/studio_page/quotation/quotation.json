@@ -2412,7 +2412,7 @@
    "auto": 1,
    "document_type": "Quotation",
    "fetch_document_using_filters": 1,
-   "filters": "{\"name\": \"{{ route.params.quotation }}\"}",
+   "filters": "{\"name\": \"{{ route.params.quotation }}\", \"quotation_to\": \"Customer\", \"party_name\": [\"in\", \"{{ customers }}\"]}",
    "method": "GET",
    "params": "{}",
    "resource_name": "quotation",

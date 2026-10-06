@@ -1,7 +1,8 @@
 /** Invoices list. Overdue is a subset of Outstanding, not a separate state. */
 
 import { computed, ref } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import { daysUntil, formatMoney } from "@app/utils"
 import { groupItemNames, invoiceNote, previewNames, statusTheme } from "@app/lib/documents"
 
@@ -85,12 +86,13 @@ export default function setup(context) {
 
 	// ---------------------------------------------------------------- sidebar
 	const { companyName, companyInitial } = usePortalIdentity(() => invoices.value[0]?.company)
+	const { user, customers } = useSession()
 	const customerName = computed(
 		() => invoices.value[0]?.customer_name ?? invoices.value[0]?.customer ?? "",
 	)
 
 	return {
-		companyName, customerName, companyInitial, user,
+		companyName, customerName, companyInitial, user, customers,
 		filter, query, filterOptions, counts, rows,
 		emptyTitle, emptyCaption,
 		formatMoney, statusTheme,

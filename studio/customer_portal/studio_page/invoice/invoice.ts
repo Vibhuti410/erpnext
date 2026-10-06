@@ -1,7 +1,8 @@
 /** Invoice detail. The comment thread and "Pay now" are STATIC — no payment gateway is wired. */
 
 import { computed, ref } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import {
 	daysUntil,
 	descriptionOf,
@@ -215,6 +216,7 @@ export default function setup(context) {
 
 	// ---------------------------------------------------------------- sidebar
 	const { companyName, companyInitial } = usePortalIdentity(() => doc.value.company)
+	const { user, customers } = useSession()
 	const customerName = computed(() => doc.value.customer_name ?? doc.value.customer ?? "")
 
 	return {
@@ -222,7 +224,7 @@ export default function setup(context) {
 		invoiceInfo, billingAddress, shippingAddress,
 		items, totals, payments, comments,
 		canPay, payOpen, openPay, payTitle, payMessage, payActions,
-		companyName, customerName, companyInitial, user,
+		companyName, customerName, companyInitial, user, customers,
 		formatDate, formatMoney,
 	}
 }

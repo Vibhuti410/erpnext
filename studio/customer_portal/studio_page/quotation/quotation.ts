@@ -1,7 +1,8 @@
 /** Quotation detail. The approval sheet and comment thread are STATIC — they write nothing. */
 
 import { computed, ref } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import {
 	daysUntil,
 	descriptionOf,
@@ -20,6 +21,7 @@ import { statusTheme } from "@app/lib/documents"
 
 export default function setup(context) {
 	const doc = computed<any>(() => context.quotation?.doc ?? {})
+	const { user, customers } = useSession()
 
 	// ---------------------------------------------------------------- status
 	const status = computed<string>(() => doc.value.status ?? "")
@@ -194,7 +196,7 @@ export default function setup(context) {
 		]
 	})
 
-	const signedAs = computed(() => `Signed as ${user.fullName}, ${user.email}`)
+	const signedAs = computed(() => `Signed as ${user.value.fullName}, ${user.value.email}`)
 
 	// ---------------------------------------------------------------- comments
 	// STATIC — a real thread needs a whitelisted method scoped to this contact's
@@ -209,7 +211,7 @@ export default function setup(context) {
 		  author: { fullname: "Meera Iyer" },
 		  data: { name: "1", content: "Revised rates as discussed. Galvanising is now included in the flange line, so the separate treatment charge only covers inspection." } },
 		{ type: "comment", key: "comment:2", timestamp: daysAgo(3),
-		  author: { fullname: user.fullName },
+		  author: { fullname: user.value.fullName },
 		  data: { name: "2", content: "Can you confirm whether the bolt quantity covers spares? We had asked for 5% extra." } },
 		{ type: "comment", key: "comment:3", timestamp: daysAgo(5),
 		  author: { fullname: "Meera Iyer" },
@@ -228,7 +230,7 @@ export default function setup(context) {
 		sheetTitle, dialogIcon, dialogTheme, dialogMessage,
 		fieldLabel, fieldPlaceholder, fieldDescription, signedAs,
 		comments,
-		companyName, customerName, companyInitial, user,
+		companyName, customerName, companyInitial, user, customers,
 		formatDate, formatMoney,
 	}
 }

@@ -1,5 +1,6 @@
-/** Company and contact for the shared sidebar. The company name is memoised so the
- *  header does not blank on every navigation. */
+/** The company whose portal this is, for the shared sidebar. Memoised so the header
+ *  does not blank on every navigation. The signed-in contact comes from
+ *  @app/composables/useSession. */
 
 import { computed, ref, watch } from "vue"
 
@@ -26,8 +27,6 @@ function remember(name: string): void {
 		// nothing to do: the in-memory copy above still covers this session
 	}
 }
-
-export const user = { fullName: "Rahul Menon", email: "rahul@zenithfab.in", initials: "RM" }
 
 export function usePortalIdentity(source: () => string | undefined | null) {
 	const companyName = ref(remembered)

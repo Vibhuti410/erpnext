@@ -1,7 +1,8 @@
 /** Shipment detail: when it left, how to trace it, what shipped and what is still to come. */
 
 import { computed } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import {
 	descriptionOf,
 	EMPTY,
@@ -170,13 +171,14 @@ export default function setup(context) {
 
 	// ---------------------------------------------------------------- sidebar
 	const { companyName, companyInitial } = usePortalIdentity(() => doc.value.company)
+	const { user, customers } = useSession()
 	const customerName = computed(() => doc.value.customer_name ?? doc.value.customer ?? "")
 
 	return {
 		docId, crumbs, status, statusTheme: theme, printDocument, goTo,
 		dispatchInfo, tracking, shippingAddress,
 		items, summary, comments,
-		companyName, customerName, companyInitial, user,
+		companyName, customerName, companyInitial, user, customers,
 		formatDate,
 	}
 }

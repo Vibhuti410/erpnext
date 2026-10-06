@@ -1,7 +1,8 @@
 /** Order detail. No action row: nothing on a sales order is customer-actionable. */
 
 import { computed } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import {
 	daysUntil,
 	descriptionOf,
@@ -160,13 +161,14 @@ export default function setup(context) {
 
 	// ---------------------------------------------------------------- sidebar
 	const { companyName, companyInitial } = usePortalIdentity(() => doc.value.company)
+	const { user, customers } = useSession()
 	const customerName = computed(() => doc.value.customer_name ?? doc.value.customer ?? "")
 
 	return {
 		docId, crumbs, status, statusTheme, printDocument, goTo,
 		salesInfo, billingAddress, shippingAddress,
 		items, totals, comments,
-		companyName, customerName, companyInitial, user,
+		companyName, customerName, companyInitial, user, customers,
 		formatDate, formatMoney,
 	}
 }

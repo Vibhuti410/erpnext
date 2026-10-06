@@ -1,7 +1,8 @@
 /** Quotations list. `Replied` is hidden — see HIDDEN_QUOTATION_STATUSES. */
 
 import { computed, ref } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import { daysUntil, formatMoney } from "@app/utils"
 import { groupItemNames, previewNames, quotationNote, statusTheme } from "@app/lib/documents"
 
@@ -101,12 +102,13 @@ export default function setup(context) {
 
 	// ---------------------------------------------------------------- sidebar
 	const { companyName, companyInitial } = usePortalIdentity(() => quotations.value[0]?.company)
+	const { user, customers } = useSession()
 	const customerName = computed(
 		() => quotations.value[0]?.customer_name ?? quotations.value[0]?.party_name ?? "",
 	)
 
 	return {
-		companyName, customerName, companyInitial, user,
+		companyName, customerName, companyInitial, user, customers,
 		filter, query, filterOptions, counts, rows,
 		emptyTitle, emptyCaption,
 		formatMoney, statusTheme,

@@ -165,13 +165,14 @@
                   {
                    "blockName": "Icon",
                    "classes": [
-                    "lucide-search",
                     "size-4",
                     "text-ink-gray-5"
                    ],
                    "componentId": "span-vcxk8jxt1",
-                   "componentName": "span",
-                   "originalElement": "span",
+                   "componentName": "Icon",
+                   "componentProps": {
+                    "icon": "lucide-search"
+                   },
                    "parentSlotName": "prefix"
                   }
                  ],
@@ -415,14 +416,15 @@
                         {
                          "blockName": "Icon",
                          "classes": [
-                          "lucide-rotate-ccw",
                           "size-3.5",
                           "text-ink-gray-5"
                          ],
                          "componentId": "span-5fc0v9uv1",
-                         "componentName": "span",
-                         "componentSlots": {},
-                         "originalElement": "span"
+                         "componentName": "Icon",
+                         "componentProps": {
+                          "icon": "lucide-rotate-ccw"
+                         },
+                         "componentSlots": {}
                         },
                         {
                          "baseStyles": {
@@ -570,13 +572,14 @@
               {
                "blockName": "Icon",
                "classes": [
-                "lucide-file-text",
                 "size-5",
                 "text-ink-gray-5"
                ],
                "componentId": "span-x1voifhlw",
-               "componentName": "span",
-               "originalElement": "span"
+               "componentName": "Icon",
+               "componentProps": {
+                "icon": "lucide-file-text"
+               }
               }
              ],
              "componentId": "div-jo86crkwg",
@@ -803,13 +806,14 @@
                   {
                    "blockName": "Icon",
                    "classes": [
-                    "lucide-search",
                     "size-4",
                     "text-ink-gray-5"
                    ],
                    "componentId": "span-vcxk8jxt1",
-                   "componentName": "span",
-                   "originalElement": "span",
+                   "componentName": "Icon",
+                   "componentProps": {
+                    "icon": "lucide-search"
+                   },
                    "parentSlotName": "prefix"
                   }
                  ],
@@ -1053,14 +1057,15 @@
                         {
                          "blockName": "Icon",
                          "classes": [
-                          "lucide-rotate-ccw",
                           "size-3.5",
                           "text-ink-gray-5"
                          ],
                          "componentId": "span-5fc0v9uv1",
-                         "componentName": "span",
-                         "componentSlots": {},
-                         "originalElement": "span"
+                         "componentName": "Icon",
+                         "componentProps": {
+                          "icon": "lucide-rotate-ccw"
+                         },
+                         "componentSlots": {}
                         },
                         {
                          "baseStyles": {
@@ -1208,13 +1213,14 @@
               {
                "blockName": "Icon",
                "classes": [
-                "lucide-file-text",
                 "size-5",
                 "text-ink-gray-5"
                ],
                "componentId": "span-x1voifhlw",
-               "componentName": "span",
-               "originalElement": "span"
+               "componentName": "Icon",
+               "componentProps": {
+                "icon": "lucide-file-text"
+               }
               }
              ],
              "componentId": "div-jo86crkwg",
@@ -1285,7 +1291,7 @@
    "auto": 1,
    "document_type": "Quotation",
    "fields": "[\"name\", \"party_name\", \"customer_name\", \"company\", \"transaction_date\", \"valid_till\", \"status\", \"grand_total\", \"currency\", \"amended_from\"]",
-   "filters": "{\"docstatus\": 1}",
+   "filters": "{\"docstatus\": 1, \"quotation_to\": \"Customer\", \"party_name\": [\"in\", \"{{ customers }}\"]}",
    "limit": 200,
    "method": "GET",
    "params": "{}",
@@ -1299,7 +1305,7 @@
    "auto": 1,
    "document_type": "Quotation",
    "fields": "[\"name\", \"`tabQuotation Item`.item_name\"]",
-   "filters": "{\"docstatus\": 1}",
+   "filters": "{\"docstatus\": 1, \"quotation_to\": \"Customer\", \"party_name\": [\"in\", \"{{ customers }}\"]}",
    "limit": 500,
    "method": "GET",
    "params": "{}",

@@ -1,7 +1,8 @@
 /** Shipments list, over submitted delivery notes. */
 
 import { computed, ref } from "vue"
-import { usePortalIdentity, user } from "@app/composables/usePortalIdentity"
+import { usePortalIdentity } from "@app/composables/usePortalIdentity"
+import { useSession } from "@app/composables/useSession"
 import { formatDate, formatQty } from "@app/utils"
 import {
 	groupItemNames,
@@ -78,12 +79,13 @@ export default function setup(context) {
 
 	// ---------------------------------------------------------------- sidebar
 	const { companyName, companyInitial } = usePortalIdentity(() => shipments.value[0]?.company)
+	const { user, customers } = useSession()
 	const customerName = computed(
 		() => shipments.value[0]?.customer_name ?? shipments.value[0]?.customer ?? "",
 	)
 
 	return {
-		companyName, customerName, companyInitial, user,
+		companyName, customerName, companyInitial, user, customers,
 		filter, query, filterOptions, counts, rows,
 		emptyTitle, emptyCaption,
 		formatDate, statusTheme,

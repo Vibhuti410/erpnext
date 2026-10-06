@@ -261,6 +261,25 @@ def get_parents_for_user(parenttype: str) -> list[str]:
 	).run(pluck="name")
 
 
+@frappe.whitelist()
+def get_portal_context() -> dict:
+	"""Who the signed-in portal user is, and which customers they may see.
+
+	The server-rendered portal pages call get_parents_for_user() directly while
+	building their HTML. A Studio portal renders in the browser, which cannot
+	reach an unwhitelisted function, so it asks for the same answer here.
+	"""
+	user = frappe.session.user
+	full_name, email = frappe.db.get_value("User", user, ["full_name", "email"]) or (None, None)
+
+	return {
+		"user": user,
+		"full_name": full_name,
+		"email": email,
+		"customers": get_parents_for_user("Customer"),
+	}
+
+
 def has_website_permission(doc, ptype, user, verbose=False):
 	doctype = doc.doctype
 	customers, suppliers = get_customers_suppliers(doctype, user)
